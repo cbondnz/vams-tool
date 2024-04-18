@@ -50,6 +50,9 @@ module.exports = {
       padding: {
         62: "254px",
       },
+      maxWidth: {
+        "8xl": "1600px",
+      },
     },
   },
   plugins: [],

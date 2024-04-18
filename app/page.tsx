@@ -115,7 +115,7 @@ export default function Home() {
         ) : (
           <div className="sm:bg-bgHalf sm:bg-no-repeat sm:bg-right-top h-full bg-half xl:bg-contain xl:bg-bg">
             <div className="sm:max-w-2xl sm:mx-auto sm:flex sm:items-center h-full lg:max-w-4xl sm:gap-x-4 md:items-start md:pt-40 xl:max-w-7xl xl:pb-60">
-              <div className="sm:w-2/3 xl:flex xl:flex-col xl:justify-between xl:h-full">
+              <div className="sm:w-3/5 xl:flex xl:flex-col xl:justify-between xl:h-full">
                 {activeStep == 2 && <Mood onMoodChange={handleSetHappy} mood={happy} lower="Not at all happy" upper="Extremely happy" activeStep={activeStep} />}
                 {activeStep == 3 && <Mood onMoodChange={handleSetSad} mood={sad} lower="Not at all sad" upper="Extremely sad" activeStep={activeStep} />}
                 {activeStep == 4 && <Mood onMoodChange={handleSetCalm} mood={calm} lower="Not at all calm" upper="Extremely calm" activeStep={activeStep} />}

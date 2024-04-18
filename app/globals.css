@@ -35,15 +35,15 @@ body {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px; /* Width of the slider handle */
-  height: 20px; /* Height of the slider handle */
+  width: 30px; /* Width of the slider handle */
+  height: 30px; /* Height of the slider handle */
   background: #4caf50; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
 
 .slider::-moz-range-thumb {
-  width: 20px; /* Width of the slider handle */
-  height: 20px; /* Height of the slider handle */
+  width: 30px; /* Width of the slider handle */
+  height: 30px; /* Height of the slider handle */
   background: #4caf50; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }

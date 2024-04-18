@@ -19,12 +19,12 @@ const Mood: FC<ChildComponentProps> = ({ onMoodChange, mood, lower, upper, activ
     <section>
       {activeStep == 6 ? <FormHeading heading="How much of an effort is it for you to do anything?" /> : <FormHeading heading="Please indicate on the scale the position that best represents how you feel." />}
 
-      <form className="text-2xl font-semibold flex gap-1 xl:text-3xl pt-20">
-        <label htmlFor="mood">
-          {lower}
-          <input type="range" id="mood" name="mood" min={0} max={100} value={mood} onChange={handleChange} className="w-56 mr-5 slider" />
-          {upper}
+      <form className="text-2xl font-semibold gap-1 xl:text-3xl pt-20">
+        <label htmlFor="mood" className="w-full flex justify-between">
+          <span className="pr-1">{lower}</span>
+          <span className="pl-1">{upper}</span>
         </label>
+        <input type="range" id="mood" name="mood" min={0} max={100} value={mood} onChange={handleChange} className="slider" />
       </form>
     </section>
   );
