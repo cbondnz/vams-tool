@@ -18,10 +18,32 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%; /* Width of the slider */
+  height: 10px; /* Height of the slider */
+  background: #d3d3d3; /* Gray background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for a more visual effect) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px; /* Width of the slider handle */
+  height: 20px; /* Height of the slider handle */
+  background: #4caf50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 20px; /* Width of the slider handle */
+  height: 20px; /* Height of the slider handle */
+  background: #4caf50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
 }

@@ -1,113 +1,137 @@
-import Image from 'next/image'
+"use client";
+import Mood from "@/components/Mood";
+import NavButtons from "@/components/NavButtons";
+import Results from "@/components/Results";
+import SelectedOptions from "@/components/SelectedOptions";
+import Welcome from "@/components/Welcome";
+import React, { useState, useEffect } from "react";
 
 export default function Home() {
+  // State objects
+  const [activeStep, setActiveStep] = useState<number>(1);
+  const [happy, setHappy] = useState<number>(50);
+  const [sad, setSad] = useState<number>(50);
+  const [calm, setCalm] = useState<number>(50);
+  const [tense, setTense] = useState<number>(50);
+  const [effort, setEffort] = useState<number>(50);
+  const [sleepy, setSleepy] = useState<number>(50);
+  const [alert, setAlert] = useState<number>(50);
+  const [weary, setWeary] = useState<number>(50);
+  const [ga, setGA] = useState<number>(0);
+  const [gv, setGV] = useState<number>(0);
+
+  // Clicking the "Get Started" button on the home screen moves to the first form page
+  const handleClickGettingStarted = () => {
+    setActiveStep(2);
+  };
+
+  // Check if end state is not reached and increment the step by 1
+  const handleClickNext = () => {
+    if (activeStep != 10) {
+      setActiveStep(activeStep + 1);
+    }
+
+    // Calculate GV = alert + 300 - sleepy - effort - weary / 4
+    setGV((alert + 300 - sleepy - effort - weary) / 4);
+
+    // Calculate GA = happy + calm + 200 - sad - tense / 4
+    setGA((happy + calm + 200 - sad - tense) / 4);
+  };
+
+  // Check if start state is not reached and decrement the step by 1
+  const handleClickPrevious = () => {
+    if (activeStep != 1) {
+      setActiveStep(activeStep - 1);
+    }
+  };
+
+  // Resets all scores back to defaults
+  const startOver = () => {
+    setHappy(50);
+    setSad(50);
+    setCalm(50);
+    setTense(50);
+    setEffort(50);
+    setSleepy(50);
+    setAlert(50);
+    setWeary(50);
+    setGA(0);
+    setGV(0);
+  };
+
+  // Resets scorings and go back to home page (step 1)
+  const handleClickStartOver = () => {
+    startOver();
+    setActiveStep(1);
+  };
+
+  // Sets the happy mood based on the value received from the form inputs
+  const handleSetHappy = (selectedValue: number) => {
+    setHappy(selectedValue);
+  };
+
+  // Sets the sad mood based on the value received from the form inputs
+  const handleSetSad = (selectedValue: number) => {
+    setSad(selectedValue);
+  };
+
+  // Sets the calm mood based on the value received from the form inputs
+  const handleSetCalm = (selectedValue: number) => {
+    setCalm(selectedValue);
+  };
+
+  // Sets the tense mood based on the value received from the form inputs
+  const handleSetTense = (selectedValue: number) => {
+    setTense(selectedValue);
+  };
+
+  // Sets the energetic mood based on the value received from the form inputs
+  const handlesetEffort = (selectedValue: number) => {
+    setEffort(selectedValue);
+  };
+
+  // Sets the sleepy mood based on the value received from the form inputs
+  const handleSetSleepy = (selectedValue: number) => {
+    setSleepy(selectedValue);
+  };
+
+  // Sets the alert mood based on the value received from the form inputs
+  const handleSetAlert = (selectedValue: number) => {
+    setAlert(selectedValue);
+  };
+
+  // Sets the weary mood based on the value received from the form inputs
+  const handleSetWeary = (selectedValue: number) => {
+    setWeary(selectedValue);
+  };
+
+  useEffect(() => {}, [ga, gv]);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+    <main className="text-primary p-4 sm:p-0 h-screen">
+      <section className="h-full">
+        {activeStep == 1 ? (
+          <Welcome onClick={handleClickGettingStarted} />
+        ) : (
+          <div className="sm:bg-bgHalf sm:bg-no-repeat sm:bg-right-top h-full bg-half xl:bg-contain xl:bg-bg">
+            <div className="sm:max-w-2xl sm:mx-auto sm:flex sm:items-center h-full lg:max-w-4xl sm:gap-x-4 md:items-start md:pt-40 xl:max-w-7xl xl:pb-60">
+              <div className="sm:w-2/3 xl:flex xl:flex-col xl:justify-between xl:h-full">
+                {activeStep == 2 && <Mood onMoodChange={handleSetHappy} mood={happy} lower="Not at all happy" upper="Extremely happy" activeStep={activeStep} />}
+                {activeStep == 3 && <Mood onMoodChange={handleSetSad} mood={sad} lower="Not at all sad" upper="Extremely sad" activeStep={activeStep} />}
+                {activeStep == 4 && <Mood onMoodChange={handleSetCalm} mood={calm} lower="Not at all calm" upper="Extremely calm" activeStep={activeStep} />}
+                {activeStep == 5 && <Mood onMoodChange={handleSetTense} mood={tense} lower="Not at all tense" upper="Extremely tense" activeStep={activeStep} />}
+                {activeStep == 6 && <Mood onMoodChange={handlesetEffort} mood={effort} lower="Little effort" upper="A lot of effort" activeStep={activeStep} />}
+                {activeStep == 7 && <Mood onMoodChange={handleSetSleepy} mood={sleepy} lower="Not at all sleepy" upper="Extremely sleepy" activeStep={activeStep} />}
+                {activeStep == 8 && <Mood onMoodChange={handleSetAlert} mood={alert} lower="Not at all alert" upper="Extremely alert" activeStep={activeStep} />}
+                {activeStep == 9 && <Mood onMoodChange={handleSetWeary} mood={weary} lower="Not at all weary" upper="Extremely weary" activeStep={activeStep} />}
+                {activeStep == 10 && <Results happy={happy} sad={sad} calm={calm} tense={tense} effort={effort} sleepy={sleepy} alert={alert} weary={weary} ga={ga} gv={gv} />}
+                {activeStep != 1 && <NavButtons onClickNext={handleClickNext} onClickPrevious={handleClickPrevious} onClickStartOver={handleClickStartOver} activeStep={activeStep} />}
+              </div>
+              {activeStep == 10 && <SelectedOptions happy={happy} sad={sad} calm={calm} tense={tense} effort={effort} sleepy={sleepy} alert={alert} weary={weary} ga={ga} gv={gv} />}
+            </div>
+          </div>
+        )}
+      </section>
     </main>
-  )
+  );
 }
