@@ -10,7 +10,7 @@ module.exports = {
         bgHalf: "url('/background-half-opacity.svg')",
       },
       colors: {
-        primary: "#332D61",
+        primary: "black",
         secondary: "#5DC6C5",
         bgAccentDark: "#fce2ec",
         bgAccentLight: "#ffeff5",

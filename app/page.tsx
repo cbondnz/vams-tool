@@ -116,14 +116,14 @@ export default function Home() {
           <div className="sm:bg-bgHalf sm:bg-no-repeat sm:bg-right-top h-full bg-half xl:bg-contain xl:bg-bg">
             <div className="sm:max-w-2xl sm:mx-auto sm:flex sm:items-center h-full lg:max-w-4xl sm:gap-x-4 md:items-start md:pt-40 xl:max-w-7xl xl:pb-60">
               <div className="sm:w-3/5 xl:flex xl:flex-col xl:justify-between xl:h-full">
-                {activeStep == 2 && <Mood onMoodChange={handleSetHappy} mood={happy} lower="Not at all happy" upper="Extremely happy" activeStep={activeStep} />}
+                {activeStep == 2 && <Mood onMoodChange={handleSetAlert} mood={alert} lower="Not at all alert" upper="Extremely alert" activeStep={activeStep} />}
                 {activeStep == 3 && <Mood onMoodChange={handleSetSad} mood={sad} lower="Not at all sad" upper="Extremely sad" activeStep={activeStep} />}
-                {activeStep == 4 && <Mood onMoodChange={handleSetCalm} mood={calm} lower="Not at all calm" upper="Extremely calm" activeStep={activeStep} />}
-                {activeStep == 5 && <Mood onMoodChange={handleSetTense} mood={tense} lower="Not at all tense" upper="Extremely tense" activeStep={activeStep} />}
-                {activeStep == 6 && <Mood onMoodChange={handlesetEffort} mood={effort} lower="Little effort" upper="A lot of effort" activeStep={activeStep} />}
-                {activeStep == 7 && <Mood onMoodChange={handleSetSleepy} mood={sleepy} lower="Not at all sleepy" upper="Extremely sleepy" activeStep={activeStep} />}
-                {activeStep == 8 && <Mood onMoodChange={handleSetAlert} mood={alert} lower="Not at all alert" upper="Extremely alert" activeStep={activeStep} />}
-                {activeStep == 9 && <Mood onMoodChange={handleSetWeary} mood={weary} lower="Not at all weary" upper="Extremely weary" activeStep={activeStep} />}
+                {activeStep == 4 && <Mood onMoodChange={handleSetTense} mood={tense} lower="Not at all tense" upper="Extremely tense" activeStep={activeStep} />}
+                {activeStep == 5 && <Mood onMoodChange={handlesetEffort} mood={effort} lower="Little effort" upper="A lot of effort" activeStep={activeStep} />}
+                {activeStep == 6 && <Mood onMoodChange={handleSetHappy} mood={happy} lower="Not at all happy" upper="Extremely happy" activeStep={activeStep} />}
+                {activeStep == 7 && <Mood onMoodChange={handleSetWeary} mood={weary} lower="Not at all weary" upper="Extremely weary" activeStep={activeStep} />}
+                {activeStep == 8 && <Mood onMoodChange={handleSetCalm} mood={calm} lower="Not at all calm" upper="Extremely calm" activeStep={activeStep} />}
+                {activeStep == 9 && <Mood onMoodChange={handleSetSleepy} mood={sleepy} lower="Not at all sleepy" upper="Extremely sleepy" activeStep={activeStep} />}
                 {activeStep == 10 && <Results happy={happy} sad={sad} calm={calm} tense={tense} effort={effort} sleepy={sleepy} alert={alert} weary={weary} ga={ga} gv={gv} />}
                 {activeStep != 1 && <NavButtons onClickNext={handleClickNext} onClickPrevious={handleClickPrevious} onClickStartOver={handleClickStartOver} activeStep={activeStep} />}
               </div>
