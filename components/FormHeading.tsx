@@ -5,5 +5,5 @@ interface Props {
 }
 
 export default function FormHeading({ heading }: Props) {
-  return <h1 className="text-4xl font-bold sm:text-3xl xl:text-6xl">{heading}</h1>;
+  return <h1 className="text-4xl font-bold sm:text-3xl xl:text-6xl dark:text-white">{heading}</h1>;
 }

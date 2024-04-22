@@ -40,16 +40,16 @@ const Results: FC<ChildComponentProps> = ({ happy, sad, calm, tense, effort, sle
   return (
     <section>
       <FormHeading heading="Results" />
-      <h3 className="my-5 text-xl sm:text-base xl:text-2xl">Based on the answers provided to the questionnaire, your mood state scores are outlined.</h3>
-      <p className="text-sm italic">
+      <h3 className="my-5 text-xl sm:text-base xl:text-2xl dark:text-white">Based on the answers provided to the questionnaire, your mood state scores are outlined.</h3>
+      <p className="text-sm italic dark:text-white">
         Global Affect (GV) and Global Vigor (GV) scores are calculated according to Monk, T.H. (1989) - A visual analogue scale technique to measure global vigor and affect. See{" "}
         <a href="https://pubmed.ncbi.nlm.nih.gov/2922449/" target="_blank" className="text-link">
           https://pubmed.ncbi.nlm.nih.gov/2922449/
         </a>{" "}
         for details.
       </p>
-      <p className="text-sm italic mt-2">GA = happy + calm + 200 - sad - tense / 4</p>
-      <p className="text-sm italic">GV = alert + 300 - sleepy - effort - weary / 4</p>
+      <p className="text-sm italic mt-2 dark:text-white">GA = happy + calm + 200 - sad - tense / 4</p>
+      <p className="text-sm italic dark:text-white">GV = alert + 300 - sleepy - effort - weary / 4</p>
 
       <div className="rounded-3xl border-2 border-slate-600 p-4 bg-white mt-2">
         <div className="flex justify-end gap-4">
