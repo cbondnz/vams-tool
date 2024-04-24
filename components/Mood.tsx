@@ -17,7 +17,7 @@ const Mood: FC<ChildComponentProps> = ({ onMoodChange, mood, lower, upper, activ
 
   return (
     <section>
-      {activeStep == 6 ? <FormHeading heading="How much of an effort is it for you to do anything?" /> : <FormHeading heading="Please indicate on the scale the position that best represents how you feel." />}
+      {activeStep == 5 ? <FormHeading heading="How much of an effort is it for you to do anything?" /> : <FormHeading heading="Please indicate on the scale the position that best represents how you feel." />}
 
       <form className="text-2xl font-semibold gap-1 xl:text-3xl pt-20 dark:text-white">
         <label htmlFor="mood" className="w-full flex justify-between">
